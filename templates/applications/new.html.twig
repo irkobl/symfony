@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Applications{% endblock %}
+
+{% block body %}
+<div class="col-6">
+    <h3 class="d-flex justify-content-center">Создать заявку</h3>
+
+    {{ include('applications/forms/new.html.twig') }}
+
+    <a href="{{ path('app_applications_index') }}">Перейти к списку</a>
+</div>    
+{% endblock %}

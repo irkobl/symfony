@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Просмотр{% endblock %}
+
+{% block body %}
+    <h3 class="d-flex justify-content-center">Заявка</h3>
+    <div class="card border-light mb-3">
+        <div class="card-header">
+            #{{ application.id }} /
+            Создано: {{ application.createdAt ? application.createdAt|date('Y-m-d H:i:s') : '' }} /
+            Обновлено: {{ application.updatedAt ? application.updatedAt|date('Y-m-d H:i:s') : '' }} /
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ application.title }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ application.status }}</h6>
+          <p class="card-text">{{ application.text }}</p>
+          <div>
+            <blockquote class="blockquote-footer" style="margin-top: 0;">
+                <small class="text-muted">
+                    Файлы:&nbsp; 
+                </small>
+                
+                <a href="/download/{{ application.file1 ? application.file1 : '' }}" class="card-link" download>
+                    <small>{{ application.file1 ? application.file1 : '' }}</small>
+                </a>
+                <a href="/download/{{ application.file2 ? application.file2 : '' }}" class="card-link" download>
+                    <small>{{ application.file2 ? application.file2 : '' }}</small>
+                </a>
+                <a href="/download/{{ application.file3 ? application.file3 : '' }}" class="card-link" download>
+                    <small>{{ application.file3 ? application.file3 : '' }}</small>
+                </a>
+            </blockquote> 
+        </div>
+        </div>
+      </div> 
+
+    <div class="d-flex justify-content-between">
+        <a href="{{ path('app_applications_index') }}">Вернуться к списку</a>&ensp;
+        <a href="{{ path('app_applications_edit', {'id': application.id}) }}">Редактировать</a>
+
+        {{ include('applications/_delete_form.html.twig') }}
+    </div>
+    
+{% endblock %}

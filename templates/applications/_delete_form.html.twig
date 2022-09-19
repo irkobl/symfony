@@ -1,0 +1,8 @@
+<form method="post" action="{{ path('app_applications_delete', {'id': application.id}) }}" onsubmit="return confirm('Вы уверены?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ application.id) }}">
+    <div class="card-header mb-3 mt-3 d-flex justify-content-end" >
+        <button class="btn btn-outline-danger"> 
+            Удалить 
+        </button>
+    </div>    
+</form>
