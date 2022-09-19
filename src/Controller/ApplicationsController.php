@@ -104,6 +104,9 @@ class ApplicationsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {            
+            
+            //dd($application);
+            
             $applicationsRepository->add($application, true);
 
             return $this->redirectToRoute('app_applications_index', [], Response::HTTP_SEE_OTHER);

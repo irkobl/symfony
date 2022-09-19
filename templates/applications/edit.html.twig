@@ -13,30 +13,39 @@
     <div class="form-group mt-3 mb-3">
         {{ form_row(formedit.text, {'label': 'Основной текст', 'label_attr': {'class': 'form-label'}, 'attr': {'class': 'form-control', 'rows' : '6'}}) }}
     </div>
-
-    {% for application in application %}
-        <div class="mt-3">
-            <blockquote class="blockquote-footer" style="margin-top: 0;">
-                <small class="text-muted">
-                    Файлы:&nbsp; 
-                </small>
-                
-                <a href="/download/{{ form.file1 ? application.file1 : '' }}" class="card-link" download>
-                    <small>{{ application.file1 ? application.file1 : '' }}</small>
-                </a>
-                <a href="/download/{{ application.file2 ? application.file2 : '' }}" class="card-link" download>
-                    <small>{{ application.file2 ? application.file2 : '' }}</small>
-                </a>
-                <a href="/download/{{ application.file3 ? application.file3 : '' }}" class="card-link" download>
-                    <small>{{ application.file3 ? application.file3 : '' }}</small>
-                </a>
-            </blockquote> 
-        </div>
-    {% else %}
-        <div class="alert alert-primary" role="alert">
-            <td colspan="10">Файлы отсутствуют</td>
-        </div>
-    {% endfor %}
+    <div class="mt-3">        
+        <blockquote class="blockquote-footer" style="margin-top: 0;">
+            <small class="text-muted">
+                Файлы:&nbsp; 
+            </small>
+            {% if (application.file1 != null) %}
+            <img src="/download/{{ application.file1 ? application.file1 : '' }}" class="img-thumbnail" alt="..." style="width: 100px; height: 100px">
+            <a href="/download/{{ application.file1 ? application.file1 : '' }}" class="card-link" download>
+                <small>{{ application.file1 ? application.file1 : '' }}</small>
+            </a>&nbsp;
+            {% endif %}
+            
+            {% if (application.file2 != null) %}
+            <img src="/download/{{ application.file1 ? application.file2 : '' }}" class="img-thumbnail" alt="..." style="width: 100px; height: 100px">
+            <a href="/download/{{ application.file2 ? application.file2 : '' }}" class="card-link" download>
+                <small>{{ application.file2 ? application.file2 : '' }}</small>
+            </a>&nbsp;
+            {% endif %}
+            
+            {% if (application.file2 != null) %}
+            <img src="/download/{{ application.file1 ? application.file3 : '' }}" class="img-thumbnail" alt="..." style="width: 100px; height: 100px">
+            <a href="/download/{{ application.file3 ? application.file3 : '' }}" class="card-link" download>
+                <small>{{ application.file3 ? application.file3 : '' }}</small>
+            </a>
+            {% endif %}
+        </blockquote> 
+    </div>
+        
+    {% if (application.file1 == '' and application.file2 == '' and application.file3 == '' ) %}    
+    <div class="alert alert-primary" role="alert">
+        <td colspan="10">Файлы отсутствуют</td>
+    </div>
+    {% endif %}   
 
 
     <div class="form-group mt-3">
