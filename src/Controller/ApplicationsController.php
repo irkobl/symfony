@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Applications;
 use App\Form\ApplicationsType;
+use App\Form\EditApplicationsType;
 use App\Repository\ApplicationsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -99,7 +100,7 @@ class ApplicationsController extends AbstractController
     #[Route('/{id}/edit', name: 'app_applications_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Applications $application, ApplicationsRepository $applicationsRepository): Response
     {
-        $form = $this->createForm(ApplicationsType::class, $application);
+        $form = $this->createForm(EditApplicationsType::class, $application);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {            
@@ -110,7 +111,7 @@ class ApplicationsController extends AbstractController
 
         return $this->renderForm('applications/edit.html.twig', [
             'application' => $application,
-            'form' => $form,
+            'formedit' => $form,
         ]);
     }
 
