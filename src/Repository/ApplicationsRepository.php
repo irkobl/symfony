@@ -46,7 +46,8 @@ class ApplicationsRepository extends ServiceEntityRepository
    {
     
        return $this->createQueryBuilder('a')
-           ->select('a.id, a.created_at')                      
+           ->select('a.id, a.created_at')
+           ->where("a.status like '%Новое%'")                      
            ->orderBy('a.id', 'ASC')           
            ->getQuery()
            ->getArrayResult();                

@@ -16,7 +16,7 @@ setInterval(() => {
                 
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {                
-                let expired = eval("(" + xhr.responseText + ")");
+                let expired = eval("(" + xhr.responseText + ")"); 
                 
                 Object.entries(expired).map((val) => {
                     if (!this[val[0]].style.color) {
@@ -24,8 +24,8 @@ setInterval(() => {
                     } else if (this[val[0]].style.color != val[1]) {
                         this[val[0]].style.color = val[1];
                     }                    
-                })                
-
+                })
+                
             } else {
                 console.log('Error');
             }
@@ -33,4 +33,4 @@ setInterval(() => {
     };    
     xhr.send(); 
 
-}, 1800000);
+}, 3000);

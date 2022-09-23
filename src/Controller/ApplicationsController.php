@@ -158,8 +158,8 @@ class ApplicationsController extends AbstractController
         
         $expired = function ( string $time, string $color ) use ($applicationsRepository): array {
             $expiredApplication = array ();
-            foreach ($applicationsRepository->timeApp() as $data) {                
-                                
+            foreach ($applicationsRepository->timeApp() as $data) {
+                
                 $timeApplication = $data['created_at']; 
                 $timeNow = new \DateTime('now'); 
                 $timeApplication->add(new \DateInterval($time));                
@@ -171,12 +171,11 @@ class ApplicationsController extends AbstractController
             };
 
             return $expiredApplication;
-        };     
+        };
         
-
         if($request->isXmlHttpRequest()) { 
-
-            return $this->json($expired('PT30M', '#FA8072'));
+            
+            return $this->json($expired('PT1H', '#FA8072')); //$expired('PT1H', '#FA8072')
 
         } else {
 
