@@ -25,7 +25,7 @@ setInterval(() => {
                         this[val[0]].style.color = val[1];
                     }                    
                 })
-                
+
             } else {
                 console.log('Error');
             }
@@ -33,4 +33,4 @@ setInterval(() => {
     };    
     xhr.send(); 
 
-}, 3000);
+}, 30000);
