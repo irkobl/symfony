@@ -6,12 +6,19 @@ use App\Entity\Applications;
 use App\Form\ApplicationsType;
 use App\Form\EditApplicationsType;
 use App\Repository\ApplicationsRepository;
+use DateTime;
+use DateTimeImmutable;
+use Doctrine\DBAL\Types\Types;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 
 #[Route('/applications')]
@@ -19,7 +26,8 @@ class ApplicationsController extends AbstractController
 {
     #[Route('/', name: 'app_applications_index', methods: ['GET'])]
     public function index(ApplicationsRepository $applicationsRepository): Response
-    { 
+    {   
+              
         return $this->render('applications/index.html.twig', [
             'applications' => $applicationsRepository->findAll(),
         ]);
@@ -28,6 +36,8 @@ class ApplicationsController extends AbstractController
     #[Route('/new', name: 'app_applications_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ApplicationsRepository $applicationsRepository): Response
     {
+ 
+
         $application = new Applications();
         $form = $this->createForm(ApplicationsType::class, $application);
         $form->handleRequest($request);
@@ -105,8 +115,7 @@ class ApplicationsController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {            
             
-            //dd($application);
-            
+                        
             $applicationsRepository->add($application, true);
 
             return $this->redirectToRoute('app_applications_index', [], Response::HTTP_SEE_OTHER);
@@ -133,14 +142,48 @@ class ApplicationsController extends AbstractController
 
             del($application->getFile1());
             del($application->getFile2());
-            del($application->getFile3());
-
-            
+            del($application->getFile3());            
 
             $applicationsRepository->remove($application, true);
         }
 
         return $this->redirectToRoute('app_applications_index', [], Response::HTTP_SEE_OTHER);
-    }    
+    } 
+    
+    
+    #[Route('/api', name: 'api_application_time', methods: ['POST'])]
+    public function time(Request $request, ApplicationsRepository $applicationsRepository): JsonResponse 
+    {          
 
+        
+        $expired = function ( string $time, string $color ) use ($applicationsRepository): array {
+            $expiredApplication = array ();
+            foreach ($applicationsRepository->timeApp() as $data) {
+                
+                //$timeInterval = $timeNow->diff($timeApplication); 
+                
+                $timeApplication = $data['created_at']; 
+                $timeNow = new \DateTime('now'); 
+                $timeApplication->add(new \DateInterval($time));                
+                
+                if ($timeNow > $timeApplication) {                     
+                    $expiredApplication += ["{$data['id']}" => $color];
+                }
+
+            };
+
+            return $expiredApplication;
+        };     
+        
+
+        if($request->isXmlHttpRequest()) { 
+
+            return $this->json($expired('PT30M', '#FA8072'));
+
+        } else {
+
+            return $this->json(['message' => 'ups']);
+            
+        }
+    }
 }

@@ -16,7 +16,7 @@
         {% for application in applications %}            
             <div class="card border-light mb-3 w-100">
                 <div class="card-header d-flex flex-row" >
-                    <p>#{{ application.id }}</p>&ensp;
+                    <p id = "{{ application.id }}" style = "color: green">#{{ application.id }}</p>&ensp;
                     / Создано: {{ application.createdAt ? application.createdAt|date('Y-m-d H:i:s') : '' }} /
                     Обновлено: {{ application.updatedAt ? application.updatedAt|date('Y-m-d H:i:s') : '' }} /
                 </div>
