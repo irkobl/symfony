@@ -44,15 +44,12 @@ class ApplicationsRepository extends ServiceEntityRepository
 //     */
    public function timeApp (): array
    {
-    //    return $value; 
+    
        return $this->createQueryBuilder('a')
-           ->select('a.id, a.created_at')
-           //->setParameter('val', $value)
-           //->andWhere('a.created_at <> :val')           
-           ->orderBy('a.id', 'ASC')
-           //->setMaxResults(1)
+           ->select('a.id, a.created_at')                      
+           ->orderBy('a.id', 'ASC')           
            ->getQuery()
-           ->getArrayResult();                //->getResult()
+           ->getArrayResult();                
        ;
    }
 }

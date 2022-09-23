@@ -158,10 +158,8 @@ class ApplicationsController extends AbstractController
         
         $expired = function ( string $time, string $color ) use ($applicationsRepository): array {
             $expiredApplication = array ();
-            foreach ($applicationsRepository->timeApp() as $data) {
-                
-                //$timeInterval = $timeNow->diff($timeApplication); 
-                
+            foreach ($applicationsRepository->timeApp() as $data) {                
+                                
                 $timeApplication = $data['created_at']; 
                 $timeNow = new \DateTime('now'); 
                 $timeApplication->add(new \DateInterval($time));                
