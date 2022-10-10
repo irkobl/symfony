@@ -15,10 +15,6 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
-<<<<<<< HEAD
-=======
-        
->>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
 
 when@test:
     doctrine:

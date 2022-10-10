@@ -9,11 +9,7 @@
         
         <h3 class="d-flex justify-content-center">Список заявок</h3>
         <div class="card-header mb-3">
-<<<<<<< HEAD
             <a class="btn btn-outline-primary" href="{{ path('app_new') }}"> 
-=======
-            <a class="btn btn-outline-primary" href="{{ path('app_applications_new') }}"> 
->>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
                 Создать заявку 
             </a>
         </div>
@@ -21,13 +17,8 @@
             <div class="card border-light mb-3 w-100">
                 <div class="card-header d-flex flex-row" >
                     <p id = "{{ application.id }}" style = "color: green">#{{ application.id }}</p>&ensp;
-<<<<<<< HEAD
                     / Создано: {{ application.created_at ? application.created_at|date('Y-m-d H:i:s') : '' }} /
                     Обновлено: {{ application.updated_at ? application.updated_at|date('Y-m-d H:i:s') : '' }} /
-=======
-                    / Создано: {{ application.createdAt ? application.createdAt|date('Y-m-d H:i:s') : '' }} /
-                    Обновлено: {{ application.updatedAt ? application.updatedAt|date('Y-m-d H:i:s') : '' }} /
->>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">{{ application.title }}</h5>
@@ -39,7 +30,6 @@
                                 Файлы:&nbsp; 
                             </small>
                             
-<<<<<<< HEAD
                             {% for file in application.name_file %}
                                 <a href="/download/{{ file }}" class="card-link" download>
                                     <small>{{ file }}</small>
@@ -53,29 +43,11 @@
                 </div>
             </div>           
 
-=======
-                            <a href="/download/{{ application.file1 ? application.file1 : '' }}" class="card-link" download>
-                                <small>{{ application.file1 ? application.file1 : '' }}</small>
-                            </a>
-                            <a href="/download/{{ application.file2 ? application.file2 : '' }}" class="card-link" download>
-                                <small>{{ application.file2 ? application.file2 : '' }}</small>
-                            </a>
-                            <a href="/download/{{ application.file3 ? application.file3 : '' }}" class="card-link" download>
-                                <small>{{ application.file3 ? application.file3 : '' }}</small>
-                            </a>
-                        </blockquote> 
-                    </div>
-                    <a href="{{ path('app_applications_show', {'id': application.id}) }}" class="card-link">Просмотр</a>
-                    <a href="{{ path('app_applications_edit', {'id': application.id}) }}" class="card-link">Изменить</a>
-                </div>
-            </div>
->>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
         {% else %}
             <div class="alert alert-primary" role="alert">
                 <td colspan="10">Заявки отсутствуют</td>
             </div>            
         {% endfor %}
-<<<<<<< HEAD
 
         {# {% block last %}
             <div id = "last-applications">
@@ -83,8 +55,6 @@
             </div>
         {% endblock %} #}
 
-=======
->>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
     </div>
     <script type="text/javascript" src="/refresh.js"></script>
 {% endblock %}

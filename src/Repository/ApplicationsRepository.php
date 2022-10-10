@@ -2,17 +2,11 @@
 
 namespace App\Repository;
 
-<<<<<<< HEAD
 
 use App\Entity\Applications;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\QueryBuilder;
-=======
-use App\Entity\Applications;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Persistence\ManagerRegistry;
->>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
 
 /**
  * @extends ServiceEntityRepository<Applications>
@@ -29,11 +23,7 @@ class ApplicationsRepository extends ServiceEntityRepository
         parent::__construct($registry, Applications::class);
     }
 
-<<<<<<< HEAD
     public function save(Applications $entity, bool $flush = false): void
-=======
-    public function add(Applications $entity, bool $flush = false): void
->>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
     {
         $this->getEntityManager()->persist($entity);
 
@@ -51,7 +41,6 @@ class ApplicationsRepository extends ServiceEntityRepository
         }
     }
 
-<<<<<<< HEAD
 
     public function allApplication (): array
     {          
@@ -64,13 +53,6 @@ class ApplicationsRepository extends ServiceEntityRepository
 
     public function timeApp (): array
     {
-=======
-//    /**
-//     * @return Applications[] Returns an array of Applications objects
-//     */
-   public function timeApp (): array
-   {
->>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
     
        return $this->createQueryBuilder('a')
            ->select('a.id, a.created_at')
@@ -79,7 +61,6 @@ class ApplicationsRepository extends ServiceEntityRepository
            ->getQuery()
            ->getArrayResult();                
        ;
-<<<<<<< HEAD
     }
 
     public function getCompletedApplication (): QueryBuilder
@@ -133,7 +114,4 @@ class ApplicationsRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
-=======
-   }
->>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
 }

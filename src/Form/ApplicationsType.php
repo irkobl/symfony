@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Applications;
-<<<<<<< HEAD
 //use App\Entity\ApplicationFile;
 //use App\Form\FileT;
 use Symfony\Component\Validator\Constraints\All;
@@ -13,14 +12,6 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-=======
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Validator\Constraints\All;
-use Symfony\Component\Validator\Constraints\File;
->>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
 
 class ApplicationsType extends AbstractType
 {
@@ -28,14 +19,8 @@ class ApplicationsType extends AbstractType
     {
         $builder
             ->add('title')
-<<<<<<< HEAD
             ->add('text')            
             ->add('application_file', FileType::class, [                
-=======
-            ->add('text')
-            //->add('status')
-            ->add('file_1', FileType::class, [                
->>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
                 'mapped' => false,
                 'required' => false,
                 'multiple' => true,                
@@ -55,7 +40,6 @@ class ApplicationsType extends AbstractType
                         ]
                     ])
                 ] 
-<<<<<<< HEAD
             ]) 
             
             // CollectionType::class, array(
@@ -66,24 +50,13 @@ class ApplicationsType extends AbstractType
             //     'allow_delete' => true,
             //     'prototype' => true 
             // ))            
-=======
-            ])
-            //->add('file_2')
-            //->add('file_3')
-            // ->add('created_at')
-            // ->add('updated_at')
->>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-<<<<<<< HEAD
             'data_class' => Applications::class,            
-=======
-            'data_class' => Applications::class,
->>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
         ]);
     }
 }
