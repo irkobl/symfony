@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <form method="post" action="{{ path('app_delete', {'id': application.id}) }}" onsubmit="return confirm('Вы уверены?');">
+=======
+<form method="post" action="{{ path('app_applications_delete', {'id': application.id}) }}" onsubmit="return confirm('Вы уверены?');">
+>>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ application.id) }}">
     <div class="card-header mb-3 mt-3 d-flex justify-content-end" >
         <button class="btn btn-outline-danger"> 

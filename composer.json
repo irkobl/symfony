@@ -9,7 +9,13 @@
         "ext-iconv": "*",
         "doctrine/doctrine-bundle": "^2.7",
         "doctrine/doctrine-migrations-bundle": "^3.2",
+<<<<<<< HEAD
         "doctrine/orm": "^2.13",
+=======
+        "doctrine/mongodb-odm-bundle": "^4.5",
+        "doctrine/orm": "^2.13",
+        "mongodb/mongodb": "^1.13",
+>>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
         "sensio/framework-extra-bundle": "^6.2",
         "stof/doctrine-extensions-bundle": "^1.7",
         "symfony/console": "6.1.*",
@@ -19,17 +25,31 @@
         "symfony/form": "6.1.*",
         "symfony/framework-bundle": "6.1.*",
         "symfony/mime": "6.1.*",
+<<<<<<< HEAD
+=======
+        "symfony/monolog-bundle": "^3.8",
+>>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
         "symfony/proxy-manager-bridge": "6.1.*",
         "symfony/runtime": "6.1.*",
         "symfony/security-csrf": "6.1.*",
         "symfony/twig-bundle": "6.1.*",
         "symfony/validator": "6.1.*",
+<<<<<<< HEAD
         "symfony/yaml": "6.1.*"
     },
     "require-dev": {
         "symfony/maker-bundle": "^1.46",
         "symfony/stopwatch": "6.1.*",
         "symfony/web-profiler-bundle": "6.1.*"
+=======
+        "symfony/webpack-encore-bundle": "^1.15",
+        "symfony/yaml": "6.1.*",
+        "twig/extra-bundle": "^2.12|^3.0",
+        "twig/twig": "^2.12|^3.0"
+    },
+    "require-dev": {
+        "symfony/maker-bundle": "^1.45"
+>>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
     },
     "config": {
         "allow-plugins": {
@@ -79,7 +99,11 @@
     },
     "extra": {
         "symfony": {
+<<<<<<< HEAD
             "allow-contrib": false,
+=======
+            "allow-contrib": "true",
+>>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
             "require": "6.1.*"
         }
     }

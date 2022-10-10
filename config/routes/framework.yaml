@@ -2,3 +2,8 @@ when@dev:
     _errors:
         resource: '@FrameworkBundle/Resources/config/routing/errors.xml'
         prefix: /_error
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493

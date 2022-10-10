@@ -14,6 +14,7 @@
         <div class="form-group">
             {{ form_row(form.text, {'label': 'Основной текст', 'label_attr': {'class': 'form-label'}, 'attr': {'class': 'form-control', 'rows' : '6'}}) }}
         </div>
+<<<<<<< HEAD
         <div class="form-group mt-3">            
             {{ form_row(form.application_file, {'label': 'Загрузить файлы', 'label_attr': {'class': 'form-label'}, 'attr': {'class': 'form-control', 'type' : 'file'}}) }}
         </div>
@@ -24,5 +25,20 @@
     {{ form_end(form) }} 
 
     <a href="{{ path('app_index') }}">Перейти к списку</a>
+=======
+        <div class="form-group">
+            {{ form_row(form.file_1, {'label': 'Загрузить файл (3 файла)', 'label_attr': {'class': 'form-label'}, 'attr': {'class': 'form-control', 'type' : 'file', 'data-buttonText': '111'}}) }}
+        </div>
+        <div class="d-flex justify-content-end">
+            <button class="btn {{ button_color|default('btn-outline-primary') }}  mt-3" >{{ button_label|default('Сохранить') }}</button>
+        </div>
+        
+        
+    {{ form_end(form) }}
+
+
+
+    <a href="{{ path('app_applications_index') }}">Перейти к списку</a>
+>>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
 </div>    
 {% endblock %}

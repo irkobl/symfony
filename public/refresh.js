@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 
 
 window.onload = () => {
@@ -15,6 +16,10 @@ const requestAJAX = (method, endpoints) => {
     
     let url = `${window.location.href.slice(0, -13)}${endpoints}`;
 
+=======
+let url = `${window.location.href.slice(0, -13)}api`;
+setInterval(() => {
+>>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
     let xhr = new XMLHttpRequest();
 
     if (!xhr) {
@@ -22,13 +27,18 @@ const requestAJAX = (method, endpoints) => {
         return false;
     }
     
+<<<<<<< HEAD
     xhr.open(method, url, true);
+=======
+    xhr.open("POST", url, true);
+>>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
     
     xhr.setRequestHeader("X-Requested-With","XMLHttpRequest");
     
     xhr.onreadystatechange = () => { 
                 
         if (xhr.readyState == 4) {
+<<<<<<< HEAD
             if (xhr.status == 200) { 
 
                 if (endpoints === 'api') {
@@ -63,3 +73,24 @@ const requestAJAX = (method, endpoints) => {
     xhr.send();
 
 }
+=======
+            if (xhr.status == 200) {                
+                let expired = eval("(" + xhr.responseText + ")"); 
+                
+                Object.entries(expired).map((val) => {
+                    if (!this[val[0]].style.color) {
+                        console.log(this[val[0]].style.color = val[1]);                        
+                    } else if (this[val[0]].style.color != val[1]) {
+                        this[val[0]].style.color = val[1];
+                    }                    
+                })
+
+            } else {
+                console.log('Error');
+            }
+        }
+    };    
+    xhr.send(); 
+
+}, 30000);
+>>>>>>> 3b3d23ce2b099a95547e076269523c946dd2a493
