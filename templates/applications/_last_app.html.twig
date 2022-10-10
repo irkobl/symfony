@@ -1,0 +1,38 @@
+
+
+{% for application in applications %} 
+
+<div class="card border-light mb-3 w-100">
+    <div class="card-header d-flex flex-row" >
+        <p id = "{{ application.id }}" style = "color: green">#{{ application.id }}</p>&ensp;
+        / Создано: {{ application.created_at ? application.created_at|date('Y-m-d H:i:s') : '' }} /
+        Обновлено: {{ application.updated_at ? application.updated_at|date('Y-m-d H:i:s') : '' }} /
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ application.title }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ application.status }}</h6>
+        <p class="card-text text-truncate" style="margin-bottom: 0;">{{ application.text }}</p>
+        <div>
+            <blockquote class="blockquote-footer" style="margin-top: 0;">
+                <small class="text-muted">
+                    Файлы:&nbsp; 
+                </small>
+                
+                {% for file in application.name_file %}
+                    <a href="/download/{{ file }}" class="card-link" download>
+                        <small>{{ file }}</small>
+                    </a>
+                {% endfor %}
+
+            </blockquote> 
+        </div>
+        <a href="{{ path('app_show', {'id': application.id}) }}" class="card-link">Просмотр</a>
+        <a href="{{ path('app_edit', {'id': application.id}) }}" class="card-link">Изменить</a>
+    </div>
+</div>           
+
+{% else %}
+<div class="alert alert-primary" role="alert">
+    <td colspan="10">Заявки отсутствуют</td>
+</div>            
+{% endfor %}

@@ -1,3 +1,8 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+
+api_time:
+    path:       /api
+    controller: App\Controller\applicationController::time
+    methods:    GET|POST

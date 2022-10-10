@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="title" content="МФЦ Иркутской области">
+        <link rel="icon" type="image/png" href="/images/favicon.png">
+        <title>{% block title %}Welcome!{% endblock %}</title>     
+        <link href="/build/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+        <script src="/build/bootstrap.min.js" crossorigin="anonymous"></script>
+        
+    </head>
+    <body>
+        <div class="container mt-3">
+            <div class="row d-flex justify-content-center">
+                {% block body %}{% endblock %}                
+            </div>            
+        </div>        
+    </body>
+</html>
